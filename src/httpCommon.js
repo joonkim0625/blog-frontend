@@ -1,10 +1,10 @@
 import axios from "axios";
 
 //const devUrl = "http//localhost:8080/api";
-const prodUrl = "https://joonkim.netlify.app/api";
+//const prodUrl = "https://joonkim.netlify.app/api";
 
 export default axios.create({
-  baseURL: prodUrl,
+  baseURL: "https://joonkim.netlify.app/api",
   headers: {
     "Content-tpye": "application/json",
   },
