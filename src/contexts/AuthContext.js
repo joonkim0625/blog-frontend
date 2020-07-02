@@ -12,12 +12,10 @@ const AuthContextProvider = (props) => {
     // this third parameter will let me be able to check  if there is already an user data stored
     // by lazy loading
     const userData = localStorage.getItem("user");
-    console.log(userData);
     return userData ? JSON.parse(userData) : initialState;
   });
 
   useEffect(() => {
-    console.log(data);
     localStorage.setItem("user", JSON.stringify(data));
   }, [data]);
 

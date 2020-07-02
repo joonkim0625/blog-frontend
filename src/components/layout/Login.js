@@ -78,7 +78,6 @@ const Login = (props) => {
     if (!isInvalid) {
       AuthService.login(state.username, state.password).then(
         (res) => {
-          console.log(res);
           dispatch({
             type: "LOGIN",
             isAuthenticated: true,
@@ -86,7 +85,6 @@ const Login = (props) => {
           });
 
           if (props.location.state) {
-            console.log("i am going back to = " + props.location.state.from);
             history.push(props.location.state.from);
           } else {
             history.push("/");

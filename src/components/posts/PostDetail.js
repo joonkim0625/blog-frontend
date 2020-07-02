@@ -86,6 +86,22 @@ const PostDetail = (props) => {
       });
   }; //deletePost
 
+  const handleEditClick = (event) => {
+    history.push({
+      pathname: currentPost.boardType === "mypost" ? "/addmypost" : "/addpost",
+      state: {
+        postId: currentPost.postId,
+      },
+    });
+  };
+
+  const handleBackToListClick = (event) => {
+    if (currentPost.boardType === "mypost") {
+      history.push("/myposts");
+    } else {
+      history.push("/posts");
+    }
+  };
   // convert the flat structured array into a nested strucutred array
   const nestComments = (commentsList) => {
     // code credit => https://stackoverflow.com/questions/36829778/rendering-nested-threaded-comments-in-react
@@ -303,7 +319,10 @@ const PostDetail = (props) => {
           style={{ paddingLeft: depth * 10 }}
         >
           <h6 className="pl-2 d-inline-block">{comment.author}</h6>
-          <span className="float-right" style={{ fontSize: 14 }}>
+          <span
+            className="float-right"
+            style={{ fontSize: 14, marginRight: 10 }}
+          >
             {comment.createdAt === comment.updatedAt ? (
               <>
                 Written on{" "}
@@ -320,7 +339,7 @@ const PostDetail = (props) => {
             {comment.comment}
           </Card.Body>
           <div className="btn-toolbar justify-content-end" role="toolbar">
-            <div className="btn-group btn-group-sm" role="group">
+            <div className="btn-group btn-group-sm mr-2" role="group">
               <button
                 type="button"
                 className="btn btn-outline-secondary"
@@ -406,38 +425,27 @@ const PostDetail = (props) => {
             />
             <hr />
             {auth.data.id === currentPost.userId ? (
-              <button type="button" className="badge badge-success">
-                <Link
-                  to={{
-                    pathname:
-                      currentPost.boardType === "mypost"
-                        ? "/addmypost"
-                        : "/addpost",
-                    state: {
-                      postId: currentPost.postId,
-                    },
-                  }}
-                >
-                  Edit
-                </Link>
+              <button
+                type="button"
+                className="btn btn-outline-success"
+                onClick={handleEditClick}
+              >
+                Edit
               </button>
             ) : null}
             {auth.data.id === currentPost.userId ? (
-              <button className="badge badge-danger ml-2" onClick={deletePost}>
+              <button
+                className="btn btn-outline-danger ml-2"
+                onClick={deletePost}
+              >
                 Delete{" "}
               </button>
             ) : null}
 
             <button
               type="button"
-              className="badge badge-primary float-right"
-              onClick={() => {
-                if (currentPost.boardType === "mypost") {
-                  history.push("/myposts");
-                } else {
-                  history.push("/posts");
-                }
-              }}
+              className="btn btn-outline-info float-right"
+              onClick={handleBackToListClick}
             >
               Back to list
             </button>

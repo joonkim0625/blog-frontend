@@ -57,7 +57,7 @@ const SearchResult = (props) => {
         <div>loading posts...</div>
       ) : posts.length > 0 ? (
         <>
-          <div className="list row">
+          <div className="list row" style={{ minHeight: 400 }}>
             <div className="col-md-6">
               <h4>Search Results</h4>
 

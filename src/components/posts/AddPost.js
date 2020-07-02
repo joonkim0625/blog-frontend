@@ -249,9 +249,11 @@ const AddPost = (props) => {
         </Form.Group>
 
         {editMode ? (
-          <button type="submit">update</button>
+          <button type="submit" className="btn btn-outline-success">
+            update
+          </button>
         ) : (
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="btn btn-outline-success">
             Submit
           </button>
         )}
@@ -260,7 +262,7 @@ const AddPost = (props) => {
           onClick={() => {
             history.push("/posts");
           }}
-          className="btn btn-danger float-right"
+          className="btn btn-outline-danger float-right"
         >
           Cancel
         </button>

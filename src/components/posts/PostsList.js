@@ -100,7 +100,7 @@ const PostsList = (props) => {
               </ListGroup>
             </div>
           </div>
-          <Link to="/addpost" className={"m-3 btn btn-sm btn-danger "}>
+          <Link to="/addpost" className={" btn btn-outline-danger "}>
             Write a Post{" "}
           </Link>
           <div className="mt-3">

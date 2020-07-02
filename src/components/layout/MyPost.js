@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import PostDataService from "../../services/PostService";
 import Pagination from "@material-ui/lab/Pagination";
+import moment from "moment";
 const queryString = require("query-string");
 
 const MyPost = (props) => {
@@ -81,13 +82,17 @@ const MyPost = (props) => {
     });
   };
 
+  const truncate = (content) => {
+    return content.length > 20 ? content.substring(0, 60) + "..." : content;
+  };
+
   return (
     <>
       {isLoading ? (
         <div>is loading...</div>
       ) : (
         <>
-          <div className="container" style={{ minHeight: 500 }}>
+          <div className="container" style={{ minHeight: 400 }}>
             <div className="row">
               <div className="col-md-8">
                 <h1 className="my-4">Hello, World!</h1>
@@ -102,19 +107,29 @@ const MyPost = (props) => {
                       <div className="card-body">
                         <h2>{post.title}</h2>
                         <p
-                          className="card-text text-truncate"
-                          dangerouslySetInnerHTML={{ __html: post.body }}
+                          style={{
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                          }}
+                          className="card-text"
+                          dangerouslySetInnerHTML={{
+                            __html: truncate(post.body),
+                          }}
                         />
 
-                        <Link
-                          className="btn btn-primary"
-                          to={`/mypost/${post.id}`}
+                        <button
+                          className="btn btn-outline-primary"
+                          onClick={() => {
+                            history.push(`/mypost/${post.id}`);
+                          }}
                         >
                           Read more!{" "}
-                        </Link>
+                        </button>
                       </div>
-                      <div className="card-footer text-muted">
-                        {post.createdAt}
+                      <div className="card-footer ">
+                        {moment(post.createdAt).format(
+                          "MMMM Do, YYYY at h:mm a"
+                        )}
                       </div>
                     </div>
                   ))}
@@ -123,7 +138,14 @@ const MyPost = (props) => {
           </div>
           {data.isAuthenticated && roleSet.has("ROLE_ADMIN") ? (
             <>
-              <Link to="/addmypost">Write</Link>
+              <button
+                onClick={() => {
+                  history.push("/addmypost");
+                }}
+                className="btn btn-outline-secondary"
+              >
+                Write
+              </button>
             </>
           ) : null}
 
