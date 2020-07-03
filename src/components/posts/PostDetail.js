@@ -13,6 +13,11 @@ const PostDetail = (props) => {
   const { data: auth } = useContext(AuthContext);
   let history = useHistory();
   let location = useLocation();
+  let roleSet = null;
+
+  if (auth.isAuthenticated) {
+    roleSet = auth.data.roles.length > 0 ? new Set(auth.data.roles) : null;
+  }
 
   const initialPostState = {
     postId: null,
@@ -33,6 +38,8 @@ const PostDetail = (props) => {
 
   // useEffect for an existing post
   useEffect(() => {
+    console.log("auth", auth);
+    console.log("user role = ", roleSet);
     const getPost = (postId) => {
       PostDataService.get(postId)
         .then((res) => {
@@ -79,7 +86,9 @@ const PostDetail = (props) => {
   const deletePost = () => {
     PostDataService.remove(currentPost.postId)
       .then((res) => {
-        history.push("/posts");
+        history.push(
+          currentPost.boardType === "mypost" ? "/myposts" : "/posts"
+        );
       })
       .catch((e) => {
         console.log(e);
@@ -347,7 +356,7 @@ const PostDetail = (props) => {
               >
                 reply
               </button>
-              {auth.data.id === comment.userId ? (
+              {auth.data.id === comment.userId || roleSet.has("ROLE_ADMIN") ? (
                 <>
                   <button
                     type="button"
@@ -433,7 +442,8 @@ const PostDetail = (props) => {
                 Edit
               </button>
             ) : null}
-            {auth.data.id === currentPost.userId ? (
+            {auth.data.id === currentPost.userId ||
+            roleSet.has("ROLE_ADMIN") ? (
               <button
                 className="btn btn-outline-danger ml-2"
                 onClick={deletePost}
