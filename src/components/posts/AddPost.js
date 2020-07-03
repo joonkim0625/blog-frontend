@@ -260,7 +260,7 @@ const AddPost = (props) => {
 
         <button
           onClick={() => {
-            history.push("/posts");
+            history.push(post.boardType === "mypost" ? "/myposts" : "/posts");
           }}
           className="btn btn-outline-danger float-right"
         >
