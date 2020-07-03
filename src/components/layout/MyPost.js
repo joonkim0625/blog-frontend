@@ -83,7 +83,7 @@ const MyPost = (props) => {
   };
 
   const truncate = (content) => {
-    return content.length > 60 ? content.substring(0, 60) + "..." : content;
+    return content.length > 30 ? content.substring(0, 30) + "\n..." : content;
   };
 
   return (
