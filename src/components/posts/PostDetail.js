@@ -368,7 +368,15 @@ const PostDetail = (props) => {
                   <button
                     type="button"
                     className="btn btn-outline-secondary"
-                    onClick={deleteComment}
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          "Are you sure you want to delete this comment?"
+                        )
+                      ) {
+                        deleteComment();
+                      }
+                    }}
                   >
                     delete
                   </button>
@@ -446,7 +454,13 @@ const PostDetail = (props) => {
             roleSet.has("ROLE_ADMIN") ? (
               <button
                 className="btn btn-outline-danger ml-2"
-                onClick={deletePost}
+                onClick={() => {
+                  if (
+                    window.confirm("Are you sure you want to delete this post?")
+                  ) {
+                    deletePost();
+                  }
+                }}
               >
                 Delete{" "}
               </button>
