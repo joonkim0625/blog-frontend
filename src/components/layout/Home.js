@@ -10,6 +10,31 @@ const Home = () => {
           writing about things I learn and my thoughts on things.
           <br />I hope you have a great time here!
         </p>
+
+        <span>To contact me:</span>
+        <br />
+        <span>Email: </span>
+        <a
+          href="mailto:kim00967@umn.edu"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          kim00967@umn.edu
+        </a>
+        <br />
+        <span>GitHub: </span>
+        <a href="https://github.com/joonkim0625" target="_blank">
+          github.com/joonkim0625
+        </a>
+        <br />
+        <span>LinkedIn: </span>
+        <a
+          href="https://linkedin.com/in/hyunjoon-kim-5414301a1/"
+          target="_blank"
+        >
+          linkedin.com/in/hyunjoon-kim-5414301a1
+        </a>
+        <br />
       </div>
     </>
   );
