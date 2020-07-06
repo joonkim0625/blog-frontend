@@ -38,8 +38,6 @@ const PostDetail = (props) => {
 
   // useEffect for an existing post
   useEffect(() => {
-    console.log("auth", auth);
-    console.log("user role = ", roleSet);
     const getPost = (postId) => {
       PostDataService.get(postId)
         .then((res) => {

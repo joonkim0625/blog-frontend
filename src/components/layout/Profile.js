@@ -1,21 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
-import AuthService from "../../services/authService";
+import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 
 const Profile = () => {
   const { data } = useContext(AuthContext);
 
-  //const [info, setInfo] = useState({});
-
-  //useEffect(() => {
-  //setInfo(data);
-  //console.log(info);
-  //}, [info, data]);
-
-  //const currentUser = AuthService.getCurrentUser();
-
-  console.log(data);
-  //console.log(data.data.accessToken);
   return (
     <div className="container">
       <header className="jumbotron">

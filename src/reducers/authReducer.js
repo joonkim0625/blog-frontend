@@ -5,7 +5,7 @@ export const authReducer = (state, action) => {
         ...state,
         isAuthenticated: true,
         // action.<variableName> must be the same as in the dispatch object.
-        // ex, { type: "LOGIN", payload: data } <-- this payload has to match the variable name that comes after action.<>
+        // ex, { type: "LOGIN", payload: data } <-- this payload has to match the variable name that comes after action.
         data: action.payload,
       };
 

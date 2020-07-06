@@ -21,8 +21,8 @@ const getHtml = (editorState) =>
 // AddPost.js
 const AddPost = (props) => {
   const { data: userInfo } = useContext(AuthContext);
-
   let history = useHistory();
+
   const initialPostState = {
     postId: null,
     userId: null,

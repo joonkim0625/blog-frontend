@@ -84,7 +84,8 @@ const PostsList = (props) => {
         <>
           <div className="list row" style={{ minHeight: 400 }}>
             <div className="col-md-6">
-              <h4>Articles</h4>
+              <h4>Forum</h4>
+              <p>Please leave your thoughts!</p>
 
               <ListGroup>
                 {posts &&
