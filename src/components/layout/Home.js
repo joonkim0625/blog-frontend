@@ -28,11 +28,8 @@ const Home = () => {
         </a>
         <br />
         <span>LinkedIn: </span>
-        <a
-          href="https://linkedin.com/in/hyunjoon-kim-5414301a1/"
-          target="_blank"
-        >
-          linkedin.com/in/hyunjoon-kim-5414301a1
+        <a href="https://linkedin.com/in/joonkim0625" target="_blank">
+          linkedin.com/in/joonkim0625{" "}
         </a>
         <br />
       </div>
