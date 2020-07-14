@@ -19,7 +19,7 @@ const NavbarComponent = () => {
           <Nav className="mr-auto">
             {" "}
             <Nav.Link as={Link} to="/myposts">
-              My Post
+              MyPosts
             </Nav.Link>
             <Nav.Link as={Link} to="/posts">
               Forum
