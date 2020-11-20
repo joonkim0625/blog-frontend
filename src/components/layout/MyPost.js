@@ -96,6 +96,10 @@ const MyPost = (props) => {
             <div className="row">
               <div className="col-md-8">
                 <h1 className="my-4">Hello, World!</h1>
+                <p>
+                  It may take some time to load the posts here. They will pop up
+                  soon!
+                </p>
 
                 {
                   // actual blog post content starts below
